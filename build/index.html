@@ -14,12 +14,17 @@
   <style>
     :root {
       --color-text: #bfbdb6;
+      --color-text2: #a5a39d;
+      --color-text-highlight: #68dbff;
       --color-background: #10141c;
-      --color-background2: #25292f;
+      --color-background2: #151b26;
+      --color-background3: #1e2635;
       --color-border: #474d56;
       --color-border2: #373d46;
       --color-error:  #f26d78;
       --color-selected: #670033;
+
+      --size-nav: 40px;
     }
 
     input {
@@ -55,6 +60,60 @@
       scrollbar-color: var(--color-border2) var(--color-background);
       scrollbar-width: thin;
     }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .navlink {
+      font-weight: bold;
+      display: flex;
+      align-content: center;
+      align-items: center;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .navlink:hover {
+      background-color: var(--color-background3);
+    }
+
+    .navlink.active {
+      text-decoration: underline;
+      text-underline-position: under;
+      text-underline-offset: 2px;
+    }
+
+    .code-project-card {
+      display: flex;
+    }
+
+    .code-project-card-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .code-project-card-subtitle {
+      color: var(--color-text2);
+      font-style: italic;
+    }
+
+    .code-project-card-subtitle-item {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .code-project-card-body {
+      margin-top: 10px;
+    }
+
+    .code-project-header-img {
+      padding: 20px;
+      width: 200px;
+      height: auto;
+    }
+
   </style>
 
   <body
@@ -63,11 +122,80 @@
       color: var(--color-text);
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      font-size: 18px;
     "
   >
-    <div id="main" style="display: flex;">
-      Test content
-    </div>
+
+    <nav style="
+      display: flex;
+      justify-content: space-between;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-bottom: 1px solid var(--color-border);
+      background-color: var(--color-background2);
+      height: var(--size-nav);
+    ">
+
+      <div style="display: flex;">
+        <a class="navlink" href="/"><img src="/AKLogo.png"></a>
+      </div>
+
+      <div style="display: flex;">
+        <a class="navlink active" style="margin-right: 20px" href="/">Code projects</a>
+        <a class="navlink" href="/">About</a>
+      </div>
+
+    </nav>
+
+    <div style="
+      max-height: calc(100vh - var(--size-nav));
+      overflow-y: scroll;
+      padding-left: 40px;
+      padding-right: 40px;
+    ">
+
+      <div style="max-width: 1000px; margin: auto">
+        
+        <div class="code-project-card">
+
+          <div>
+            <img class="code-project-header-img" src="/learn3d-header.png"/>
+          </div>
+
+          <div>
+            
+            <div class="code-project-card-title">
+              Software 3D renderer
+            </div>
+
+            <div class="code-project-card-subtitle">
+              <span class="code-project-card-subtitle-item">Completed: 2022-01-31</span> 
+              <span class="code-project-card-subtitle-item">Language: Odin</span> 
+              <a href="https://github.com/khvorov45/learn3d">
+                <span class="code-project-card-subtitle-item" style="color: var(--color-text-highlight)">Github link</span>
+              </a>
+            </div>
+
+            <div class="code-project-card-body">
+
+              <p>
+                A software 3d renderer I wrote in Odin following 
+                <a style="color: var(--color-text-highlight)" href="https://pikuma.com/courses/learn-3d-computer-graphics-programming">
+                "Learn 3d graphics programming from scratch"</a> course by Gustavo Pezzi.
+              </p>
+
+              <p>
+                Can draw textured models (exported as .obj) on the CPU by following steps similar to what GPUs do in shaders and internally. Has some extra features not covered in the course.
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
   </body>
 
   <!--script type="module" src="frontend.js"></script-->
