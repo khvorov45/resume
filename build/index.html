@@ -83,10 +83,12 @@
       text-decoration: underline;
       text-underline-position: under;
       text-underline-offset: 2px;
+      white-space: nowrap;
     }
 
     .code-project-card {
       display: flex;
+      min-width: 600px;
     }
 
     .code-project-card-title {
@@ -102,6 +104,7 @@
     .code-project-card-subtitle-item {
       padding-left: 10px;
       padding-right: 10px;
+      white-space: nowrap;
     }
 
     .code-project-card-body {
@@ -128,8 +131,6 @@
   >
 
     <nav style="
-      display: flex;
-      justify-content: space-between;
       padding-left: 20px;
       padding-right: 20px;
       border-bottom: 1px solid var(--color-border);
@@ -137,13 +138,22 @@
       height: var(--size-nav);
     ">
 
-      <div style="display: flex;">
-        <a class="navlink" href="/"><img src="/AKLogo.png"></a>
-      </div>
+      <div style = "
+        display: flex;
+        justify-content: space-between;
+        max-width: 1100px;
+        margin: auto;
+      ">
 
-      <div style="display: flex;">
-        <a class="navlink active" style="margin-right: 20px" href="/">Code projects</a>
-        <a class="navlink" href="/">About</a>
+        <div style="display: flex;">
+          <a class="navlink" href="/"><img src="/AKLogo.png"></a>
+        </div>
+
+        <div style="display: flex;">
+          <a class="navlink active" style="margin-right: 20px" href="/">Code projects</a>
+          <a class="navlink" href="/">About</a>
+        </div>
+
       </div>
 
     </nav>
