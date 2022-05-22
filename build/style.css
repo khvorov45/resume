@@ -1,0 +1,143 @@
+:root {
+	--color-text: #bfbdb6;
+	--color-text2: #a5a39d;
+	--color-text-highlight: #68dbff;
+	--color-background: #10141c;
+	--color-background2: #151b26;
+	--color-background3: #1e2635;
+	--color-border: #474d56;
+	--color-border2: #373d46;
+	--color-error:  #f26d78;
+	--color-selected: #670033;
+
+	--size-nav: 40px;
+}
+
+/* 
+	SECTION Scrollbars 
+*/
+
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+	background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-border2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-selected);
+}
+
+html,
+html * {
+	scrollbar-color: var(--color-border2) var(--color-background);
+	scrollbar-width: thin;
+}
+
+/* 
+	SECTION Main
+*/
+
+body {
+	background-color: var(--color-background);
+	color: var(--color-text);
+	margin: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	overflow: hidden;
+	font-size: 18px;
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-text-highlight);
+}
+
+nav {
+	padding-left: 20px;
+	padding-right: 20px;
+	border-bottom: 1px solid var(--color-border);
+	background-color: var(--color-background2);
+	height: var(--size-nav);
+}
+
+nav > div {
+	display: flex;
+	justify-content: space-between;
+	max-width: 1100px;
+	margin: auto;
+}
+
+nav > div > div {
+	display: flex;
+}
+
+nav > div > div > a {
+	color: inherit;
+	font-weight: bold;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: var(--size-nav);
+}
+
+nav > div > div > a:hover {
+	background-color: var(--color-background3);
+}
+
+nav > div > div > a.active {
+	text-decoration: underline;
+	text-underline-position: under;
+	text-underline-offset: 2px;
+	white-space: nowrap;
+}
+
+body > div {
+	max-height: calc(100vh - var(--size-nav));
+	overflow-y: scroll;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+body > div > div {
+	max-width: 1000px; 
+	margin: auto;
+}
+
+.code-project-card {
+	display: flex;
+	min-width: 600px;
+}
+
+.code-project-card-title {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.code-project-card-subtitle {
+	color: var(--color-text2);
+	font-style: italic;
+}
+
+.code-project-card-subtitle-item {
+	padding-left: 10px;
+	padding-right: 10px;
+	white-space: nowrap;
+}
+
+.code-project-card-body {
+	margin-top: 10px;
+}
+
+.code-project-header-img {
+	padding: 20px;
+	width: 200px;
+	height: auto;
+}
