@@ -147,7 +147,7 @@ write_about :: proc(writer: ^Writer) {
 	if tag_open(writer, "p") {
 		write_indented(
 			writer,
-			`Hi! I'm Sen. I work as a statistician at a research centre in Melbourne, Austrialia. 
+			`Hi! I'm Arseniy (Sen) Khvorov. I work as a statistician at a research centre in Melbourne, Austrialia. 
 			I also write code in C and other "systems" lanuages (like Odin).`,
 		)
 	}
