@@ -86,6 +86,7 @@ nav > div > div > a {
 	padding-left: 10px;
 	padding-right: 10px;
 	height: var(--size-nav);
+	white-space: nowrap;
 }
 
 nav > div > div > a:hover {
@@ -106,14 +107,10 @@ body > div {
 	padding-right: 40px;
 }
 
-body > div > div {
-	max-width: 1000px; 
-	margin: auto;
-}
-
 .code-project-card {
 	display: flex;
 	min-width: 600px;
+	max-width: 1000px;
 }
 
 .code-project-card-title {
@@ -140,4 +137,8 @@ body > div > div {
 	padding: 20px;
 	width: 200px;
 	height: auto;
+}
+
+.code-project-img {
+	flex-shrink: 0;
 }

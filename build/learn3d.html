@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Sen Khvorov - Renderer">
+		<title>
+			Sen Khvorov - Renderer
+		</title>
+		<link rel="icon" href="data:,">
+		<link rel="stylesheet" href="/style.css">
+	</head>
+	<body>
+		<nav>
+			<div>
+				<div>
+					<a href="/">
+						<img src="/AKLogo.png" alt="site logo">
+					</a>
+				</div>
+				<div>
+					<a href="/">
+						Code projects
+					</a>
+					<a href="/about.html">
+						About
+					</a>
+				</div>
+			</div>
+		</nav>
+		<div>
+			<div style="max-width: 1000px; margin: auto; min-width: 400px">
+				<h1>
+					Software 3d renderer
+				</h1>
+				<p>
+					A software 3d renderer I wrote in Odin following 
+					<a href="https://pikuma.com/courses/learn-3d-computer-graphics-programming">
+						"Learn 3d graphics programming from scratch"
+					</a>
+					course by Gustavo Pezzi.
+				</p>
+				<p>
+					Can draw textured models (exported as .obj) on the CPU by following steps similar to
+				what GPUs do in shaders and internally:
+				</p>
+				<ul>
+					<li>
+						Transform vertices from model space to world space to camera space to clip space
+				(on the GPU this would be the main part of the vertex shader, clip space 4D coordinates being the output).
+					</li>
+					<li>
+						Perform back-face culling (GPU internal).
+					</li>
+					<li>
+						Perform frustrum clipping (GPU internal)
+					</li>
+					<li>
+						Do perpective division to get 3D normalized device coordinates (GPU internal).
+					</li>
+					<li>
+						Iterate through the resulting triangles and figure out which pixles to fill (GPU internal).
+					</li>
+					<li>
+						Iterate through the pixels of each triangle and figure out what its color should be (pixel shader).
+					</li>
+				</ul>
+				<p>
+					Has some extra features not covered in the course:
+				</p>
+				<ul>
+					<li>
+						Following the top-left fill rule (or at least trying to).
+					</li>
+					<li>
+						Bilinear texture filtering.
+					</li>
+					<li>
+						Timings.
+					</li>
+					<li>
+						Debug UI.
+					</li>
+					<li>
+						Mouse support for camera control.
+					</li>
+					<li>
+						Custom windows platform code (no SDL).
+					</li>
+				</ul>
+				<p>
+					Some things Gustavo said in that course are likely wrong:
+				</p>
+				<ul>
+					<li>
+						Gaps in polygons. While his code wasn't following the top-left fill rule,
+			he was forcing all the triangles to be aligned to the pixel grid, so I don't think
+			it's actually possible to have gaps between adjacent triangles then. Not following a fill rule
+			will result in some pixels being covered by more than one triangle, but there should be no gaps.
+					</li>
+					<li>
+						Fetching outside the texture. He didn't correctly identify the cause of it in his code which was floating
+			point error accumulation. There was a float he kept adding to every iteration of a loop while filling pixels of
+			a triangle. When I switched to always having the same starting float and adding iteration number times the increment,
+			fetching outside the texture problem went away.
+					</li>
+				</ul>
+			</div>
+			<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+				<div style="overflow-x: scroll; max-width: 100%; margin-bottom: 40px;">
+					<img class="code-project-img" src="/learn3d-1.png" alt="software 3d rasteriser image 1">
+				</div>
+				<div style="overflow-x: scroll; max-width: 100%;">
+					<img class="code-project-img" src="/learn3d-2.png" alt="software 3d rasteriser image 2">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
